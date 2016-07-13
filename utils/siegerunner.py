@@ -29,10 +29,10 @@ import sys
 
 # Global parameter values, with defaults. Can be adjusted via
 # command-line arguments
-iterations = 5
+iterations = 5000
 timearg = "3s"
 concurrent = 25
-host = "http://tartini.crbs.ucsd.edu/"
+host = "http://beta.monarchinitiative.org"
 siege_exec="/usr/local/bin/siege"
 
 # parameters for choosing OMIM and HP IDs. These cannot be adjusted
