@@ -16,13 +16,13 @@ var bbop_widgets = require('bbop-widget-set');
  *                          value: 'phenotype"
  *                      }
  */
-function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, is_leaf) {
+function getTableFromSolr(query_field, div, filter, personality, tab_anchor, is_leaf, orFilter) {
     if (tab_anchor != null){
         var isTabLoading = false;
         jQuery('#categories a[href="'+tab_anchor+'"]').click(function(event) {
             if (!(jQuery('#'+div+' .table').length) && !isTabLoading){
                 isTabLoading = true;
-                getTable(id, golr_field, div, filter, personality, is_leaf);
+                getTable(query_field, div, filter, personality, is_leaf, orFilter);
             }
         });
         // Trigger a click event if we're loading the page on an href
@@ -31,12 +31,12 @@ function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, 
             jQuery('#categories a[href="'+window.location.hash+'"]').click();
         }
     } else {
-        getTable(id, golr_field, div, filter, personality, is_leaf);
+        getTable(query_field, div, filter, personality, is_leaf, orFilter);
     }
 
-    function getTable(id, golr_field, div, filter, personality, is_leaf) {
-        if (golr_field == null) {
-            golr_field = 'object_closure';
+    function getTable(query_field, div, filter, personality, is_leaf, orFilter) {
+        if (query_field == null) {
+            query_field = 'object_closure';
         }
 
         if (personality == null){
@@ -61,7 +61,7 @@ function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, 
         // Ugly hack to pass important info through the many layers of bbop so our
         // code can know what to do. See results_table_by_class_conf_bs3 and look for 'skipFields'
         //
-        handler.golr_field = golr_field;
+        handler.query_field = query_field;
         handler.is_leaf = is_leaf;
 
         var linker = new bbop.monarch.linker();
@@ -71,17 +71,8 @@ function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, 
         var molr_manager = new golr_manager(srv, gconf, engine, 'async');
         molr_manager.use_jsonp = true
         molr_manager.set_personality(personality);
-        molr_manager.add_query_filter(golr_field, id, ['*']);
         molr_manager.query_variants['facet.method'] = 'enum';
-        
-//       var golr_manager = new bbop.golr.manager.jquery(srv, gconf);
-//        golr_manager.default_rows = 25;
-//        golr_manager.reset_results_count();
-//        golr_manager.set_personality(personality);
-//        //golr_manager.add_query_filter('document_category', 'annotation', ['*']);
-//        golr_manager.add_query_filter(golr_field, id, ['*']);
-//        golr_manager.query_variants['facet.method'] = 'enum';
-
+        molr_manager.set_results_count(25);
 
         if (filter != null && filter instanceof Array && filter.length > 0){
             filter.forEach( function (val) {
@@ -89,6 +80,14 @@ function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, 
                     molr_manager.add_query_filter(val.field, val.value, ['*']);
                 }
             });
+        }
+        // Add OR filters
+        if (orFilter != null && orFilter instanceof Array && orFilter.length > 0){
+            var orFilters = orFilter.map( function (val) {
+                return val.field + ":\"" + val.value + "\"";
+            });
+            var orFilterString = orFilters.join(" OR ");
+            molr_manager.add_query_filter_as_string(orFilterString);
         }
 
         // Add filters.
@@ -204,7 +203,7 @@ function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, 
 
     //Hardcode for now
     if (personality === 'variant_phenotype') {
-        addPhenoPacketButton(pager, molr_manager, id);
+        addPhenoPacketButton(pager.button_span_id(), molr_manager);
     }
 
     // Details for spinner
@@ -242,15 +241,12 @@ function getTableFromSolr(id, golr_field, div, filter, personality, tab_anchor, 
     }
 }
 
-function addPhenoPacketButton(pager, manager, id){
+function addPhenoPacketButton(pager_span, manager){
 
     var fun_id = bbop.core.uuid();
     manager.register('search', _drawPhenoPacketBtn, '-3', fun_id);
    
     function _drawPhenoPacketBtn() {
-        
-        // Make download button
-        var span = pager.button_span_id();
 
         // / Add button to DOM.
         var button_props = {
@@ -263,7 +259,7 @@ function addPhenoPacketButton(pager, manager, id){
         var button = new bbop.html.button(label, button_props);
         var button_elt = '#' + button.get_id();
         
-        jQuery('#' + span).append(button.to_string());
+        jQuery('#' + pager_span).append(button.to_string());
         jQuery(button_elt).append("<span class=\"badge beta-badge\">BETA</span>");
         //var infoIcon = "<i class=\"fa fa-info-circle pheno-info\"></i>";
         //jQuery('#' + span).append(infoIcon);
@@ -272,7 +268,7 @@ function addPhenoPacketButton(pager, manager, id){
 
         jQuery('#' + button.get_id()).click( function() {
             var solrParams = manager.get_filter_query_string();
-            solrParams = solrParams.replace('sfq=', 'fq=', 'g');
+            solrParams = solrParams.replace(/sfq=/g, 'fq=');
             var personality = manager.get_personality();
             var personalityParam = "&personality="+personality
             var qurl = global_app_base + '/phenopacket?' + solrParams
@@ -334,7 +330,8 @@ function addDownloadButton(pager, manager){
             var field_list = fields;
             var args_hash = {
                 rows : '100000',
-                header : "true"
+                header : 'true',
+                encapsulator: '"'
             };
 
             var url = manager.get_download_url(field_list, args_hash);

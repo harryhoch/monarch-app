@@ -1,4 +1,23 @@
 [![Build Status](https://travis-ci.org/monarch-initiative/monarch-app.svg?branch=master)](https://travis-ci.org/monarch-initiative/monarch-app)
+[![Join the chat at https://gitter.im/monarch-initiative/helpdesk](https://badges.gitter.im/monarch-initiative/helpdesk.svg)](https://gitter.im/monarch-initiative/helpdesk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+## About Monarch
+
+The Monarch Institute philosophy is based on the premise that we want to make all the data count. Monarch isn’t just another database that slurps data from the typical places and renders it in a different format. We are driven to truly integrate biological information using semantics, and present it in a novel way, leveraging phenotypes to bridge the knowledge gap. Our niche is the use of computational reasoning to enable phenotype comparison both within and across species, with the ultimate goal of improving biomedical research. More project information is available on our website [https://monarchinitiative.org/page/about](https://monarchinitiative.org/page/about)
+
+## About Monarch and GitHub
+The vast majority of the work we do is in GitHub, though spread across dozens of repositories and not even necessarily all under this GitHub organization ([Monarch Initiative](https://github.com/monarch-initiative)). The GitHub organizations that contain the overall work done by the Monarch Initiative team include:
+
+- [Monarch Initiative](https://github.com/monarch-initiative)
+- [SciGraph](https://github.com/scigraph)
+- [Biolink](https://github.com/biolink)
+- [INCA tools](https://github.com/incatools)
+- [NCATS Translator - Tangerine team](https://github.com/NCATS-Tangerine)
+- [OBO Phenotype](https://github.com/obophenotype)
+- [BioDatasets](https://github.com/BioDatasets)
+- [GeneOntology](https://github.com/geneontology)
+- [PrefixCommons](https://github.com/prefixcommons)
+- [OBO Foundry](https://github.com/obofoundry)
 
 ## Welcome to Monarch
 

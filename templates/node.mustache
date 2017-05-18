@@ -43,6 +43,7 @@
                     {{{includes.homolog_anchor}}}
                     {{{includes.ortholog_phenotype_anchor}}}
                     {{{includes.pathway_anchor}}}
+                    {{{includes.interaction_anchor}}}
                     {{{includes.phenogrid_anchor}}}
                 </div>
             </div>
@@ -59,15 +60,21 @@
                         </div>
                     </div>
                     {{/hasDef}}
+                    
+                    {{#hasDisclaimer}}
+                    
 
-                    <div id="mygene-container">
+                    <div id="disclaimer-container">
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="node-description" id="mygene-description">
+                                <div class="node-description">
+                                {{{includes.disclaimer}}}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    {{/hasDisclaimer}}
 
                     {{#hasAka}}
                     <div class="ids">
@@ -105,6 +112,24 @@
                     <div class="ids">
                         <b>URI:</b>&nbsp;&nbsp;<a href="{{{iri}}}">{{{iri}}}</a>
                     </div>
+                    {{#hasSource}}
+                    <div class="ids">
+                        <b>Source:</b>&nbsp;&nbsp;{{{source}}}
+                    </div>
+                    {{/hasSource}}
+                    {{#hasDownloads}}
+                    <div class="downloads">
+                      <div class="row">
+                        <br>
+                        <div class="col-xs-12">
+                        <h3>Downloads</h3>
+                        <div class = "button-container">
+                        {{{includes.downloads}}}
+                        </div>
+                        </div>
+                       </div>
+                    </div>
+                    {{/hasDownloads}}
                     {{#hasBrw}}
                     <div class="row">
                         <br>
@@ -130,7 +155,6 @@
                     </div>
                     {{/hasBrw}}
                 </div>
-
                 {{{includes.phenotype_table}}}
                 {{{includes.disease_table}}}
                 {{{includes.gene_table}}}
@@ -140,6 +164,7 @@
                 {{{includes.homolog_table}}}
                 {{{includes.ortholog_phenotype_table}}}
                 {{{includes.pathway_table}}}
+                {{{includes.interaction_table}}}
                 <div id="compare-panel" class="category">
                   <div id="phen_vis"></div>
                 </div>
