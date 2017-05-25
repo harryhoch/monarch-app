@@ -148,16 +148,16 @@ institutions:
     people:
       - name: Harry Hochheiser
         picture: /image/team/HarryHochheiser.jpg
-        alumni: false
+        alumni: true
         title: Monarch PI
         bio: Dr. Hochheiser is currently a PI of the Monarch Initiative. He has BS and MS in Computer Science and Engineering from MIT and a Ph.D. in Computer Science from University of Maryland. His research interests lie at the intersection of biomedical informatics and human-computer interaction (HCI). His ongoing research efforts involve the application of contextual inquiry, human-centered design, information visualization, and other HCI techniques to challenges in collaborative bioinformatics and clinical informatics.
       - name: Michael Davis
-        alumni: false
+        alumni: true
         title: Software Developer
         bio: Michael is a Software Engineer for the Department of Biomedical Informatics (DBMI) at the University of Pittsburgh where he works on the development of Phenogrid.  He has an MS in Information Science from the University of Pittsburgh. He has worked for several years developing oncology-based database applications at UPMC CancerCenter. His current interest is the development and integration of analytical tools to support big data repositories in research.
       - name: Zhou Yuan
         picture: /image/team/ZhouYuan.jpg
-        alumni: false
+        alumni: true
         title: Web Application Developer
         bio: Zhou is a Web Application Developer working on the development of Phenogrid in the Department of Biomedical Informatics (DBMI) at the University of Pittsburgh. He has an MS in Information Science from the University of Pittsburgh. He is also the creator of InfoPotao, Quotagger, PotatoPy, and PotatoGuide. He works as an enthusiastic web developer who tries to create detailed designs to balance the aesthetics, web standards, security, usability, and accessibility aspects in support of biomedical research.
       - name: Chuck Borromeo
@@ -182,7 +182,12 @@ institutions:
         title: Monarch PI
         picture: /image/team/CarmodyLeigh_headshot_Nov2016.jpg
         alumni: false
-        bio:  Leigh Carmody, Ph.D., obtained her doctorate of philosophy in Molecular Physiology & Biophysics from Vanderbilt University in Spring 2007 where she studied targeting of signaling molecules to F-actin cytoskeleton/dendritic spines. Dr. Carmody continued her studies as a postdoctoral fellow at Massachusetts Institutes of Technology where she investigated the role of Rac1 in dendritic spine motility. Late 2008, she joined the Broad Institute of MIT & Harvard as a Scientist where she aided in early-stage drug discovery efforts to identify chemical leads directed at cancer targets and neglected parasitic infections.  Dr. Carmody joined Jackson Laboratory in 2015 as a Project Manager, and is currently a Scientific Curator annotating phenotyping and genomics data for the human phenotype ontology (HPO) database.
+        bio:  Leigh Carmody, Ph.D., obtained her doctorate of philosophy in Molecular Physiology & Biophysics from Vanderbilt University in Spring 2007 where she studied targeting of signaling molecules to F-actin cytoskeleton/dendritic spines. Dr. Carmody continued her studies as a postdoctoral fellow at Massachusetts Institute of Technology where she investigated the role of Rac1 in dendritic spine motility. Late 2008, she joined the Broad Institute of MIT & Harvard as a Scientist where she aided in early-stage drug discovery efforts to identify chemical leads directed at cancer targets and neglected parasitic infections.  Dr. Carmody joined Jackson Laboratory in 2015 as a Project Manager, and is currently a Scientific Curator annotating phenotyping and genomics data for the human phenotype ontology (HPO) database.
+      - name: Hannah Blau
+        title: Research Software Engineer
+        picture: /image/team/HannahBlau.jpg
+        alumni: false
+        bio:  Hannah Blau holds the Ph.D. in Computer Science from the University of Massachusetts Amherst, M.S.E. in Computer and Information Science from the University of Pennsylvania, and B.A. in French from Yale University. She worked as an AI Engineer/Research Scientist at the Artificial Intelligence Center of the Bull Corporation (Louveciennes, France), the Machine Learning Group of the Daimler-Benz Research Centre (Ulm, Germany), and the Automated Reasoning Group of the Honeywell Technology Center (Minneapolis, Minnesota). While in the Ph.D. program she served as data scientist for Professor M. Darby Dyar, Chair of Astronomy at Mount Holyoke College (South Hadley, Massachusetts).
   - id: charite
     name: Charité - Universitätsmedizin Berlin
     logo: /image/team-charite.png
