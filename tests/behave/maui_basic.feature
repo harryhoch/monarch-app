@@ -21,12 +21,9 @@ Feature: Monarch-app UI basic pages display okay
     | /about/sources      | Data Sources                  |
     | /page/disclaimer    | Monarch Disclaimer            |
     | /page/releases      | Monarch Releases              |
-    | /page/software      | Monarch Software              |
     | /page/services      | Monarch Services              |
-    | /docs/index.html    | monarch.api                   |
     | /page/phenogrid     | Monarch Phenotype Grid Widget |
     | /page/pubs          | Monarch Publications          |
-    | /page/glossary      | Monarch Glossary              |
     | /page/team          | Monarch Development Team      |
     
  @ui
@@ -35,9 +32,9 @@ Feature: Monarch-app UI basic pages display okay
      then the url will be "/phenotype/HP:0006645"
      
  @ui
- Scenario: Going to the page /resolve/ClinVarVariant:159648 will forward to /variant/ClinVarVariant:159648
-    Given I go to page "/resolve/ClinVarVariant:159648"
-     then the url will be "/variant/ClinVarVariant:159648"
+ Scenario: Going to the page /resolve/ClinVarVariant:39784 will forward to /variant/ClinVarVariant:159648
+    Given I go to page "/resolve/ClinVarVariant:39784"
+     then the url will be "/variant/ClinVarVariant:39784"
      
  @ui
  Scenario: Going to the page /resolve/MGI:3771021 will forward to /genotype/MGI:3771021
@@ -92,9 +89,9 @@ Scenario: Going to the page /NoSuchPath will produce a Page Not Found error
      then the url will be "/phenotype/HP:0006645"
      
  @ui
- Scenario: Going to the page /ClinVarVariant:159648 will forward to /variant/ClinVarVariant:159648
-    Given I go to page "/ClinVarVariant:159648"
-     then the url will be "/variant/ClinVarVariant:159648"
+ Scenario: Going to the page /ClinVarVariant:39784 will forward to /variant/ClinVarVariant:159648
+    Given I go to page "/ClinVarVariant:39784"
+     then the url will be "/variant/ClinVarVariant:39784"
      
  @ui
  Scenario: Going to the page /MGI:3771021 will forward to /genotype/MGI:3771021

@@ -5,7 +5,13 @@ Feature: NodeJS and RingoJS pass all tests.
  Scenario: The "/search" endpoint returns the correct JSON
     Given I go to page "/search/twist"
      then the title should be "Search Results: twist"
-     then the document should contain "Search Results: twist"
+     then the document should contain "Category"
+
+@ui
+ Scenario: The "/search" endpoint returns the correct JSON
+    Given I go to page "/search/p53"
+     then the title should be "Search Results: p53"
+     then the document should contain "Taxon"
 
 @ui
  Scenario: The "/about/sources" endpoint returns the correct HTML
@@ -43,17 +49,6 @@ Feature: NodeJS and RingoJS pass all tests.
  Scenario: The "/robots.txt" endpoint returns the correct JSON
     Given I go to page "/robots.txt"
      then the document should contain "User-agent: *"
-
-@ui
- Scenario Outline: the documentation pages exist
-   Given I go to page "<page>"
-    then the title should be "<title>"
-    and the document should contain "<content>"
-   Examples: doc pages
-    | page                              | title             | content                       |
-    | /docs/index.html                  | monarch.api       | fetchDiseaseInfo              |
-    | /docs/files/web/webapp-js.html    | webapp            | Monarch REST URLs for retrieving web pages, JSON and HTML|
-    | /docs/files/web/webapp-js.html#webapp.simsearch    | webapp            | Performs OwlSim search|
 
 @ui
  Scenario: The "/compare/" endpoint returns the correct JSON
